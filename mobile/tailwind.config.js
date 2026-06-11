@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        bgst: 'var(--bgst)',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },

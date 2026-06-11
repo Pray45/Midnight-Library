@@ -16,7 +16,7 @@ export default function NewUser() {
   }, [hydrated, loggedIn]);
 
   if (!hydrated) {
-    return <View className="flex-1 bg-background" />;
+    return <View className="bg-bgst flex-1" />;
   }
 
   const nextPage = () => {
@@ -52,13 +52,13 @@ type PageProps = {
 
 function FirstPage({ onNext }: PageProps) {
   return (
-    <View className="h-full w-full justify-end bg-background">
-      <View className="my-12 ml-10 flex w-2/3 justify-start">
+    <View className="bg-bgst h-full w-full justify-end">
+      <View className="ml-10 flex justify-start">
         <Text className="text-6xl font-bold">Your</Text>
         <Text className="text-6xl font-bold">Bookshelf</Text>
       </View>
 
-      <Image className="h-3/5 w-full" source={require('../assets/INDEX.png')} />
+      <Image className="h-2/3 w-full" source={require('../assets/INDEX.png')} />
 
       <View className="flex flex-row items-center justify-around">
         <View className="flex flex-row gap-2">
@@ -81,7 +81,7 @@ function FirstPage({ onNext }: PageProps) {
 
 function SecondPage({ onNext, onBack }: PageProps) {
   return (
-    <View className="h-full w-full justify-end bg-background">
+    <View className="bg-bgst h-full w-full justify-end">
       <Pressable onPress={onBack} className="absolute left-6 top-16 z-10">
         <Ionicons name="arrow-back" size={28} color="black" />
       </Pressable>
@@ -114,7 +114,7 @@ function SecondPage({ onNext, onBack }: PageProps) {
 
 function ThirdPage({ onNext, onBack }: PageProps) {
   return (
-    <View className="h-full w-full justify-end bg-background">
+    <View className="bg-bgst h-full w-full justify-end">
       <Pressable onPress={onBack} className="absolute left-6 top-16 z-10">
         <Ionicons name="arrow-back" size={28} color="black" />
       </Pressable>
@@ -147,7 +147,7 @@ function ThirdPage({ onNext, onBack }: PageProps) {
 
 function FourthPage({ onBack }: PageProps) {
   return (
-    <View className="h-full w-full justify-end bg-background">
+    <View className="bg-bgst h-full w-full justify-end">
       <Pressable onPress={onBack} className="absolute left-6 top-16 z-10">
         <Ionicons name="arrow-back" size={28} color="black" />
       </Pressable>
