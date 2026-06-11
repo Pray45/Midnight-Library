@@ -1,6 +1,16 @@
 import { View, Image, ScrollView, Text } from 'react-native';
 
-export default function Vertical({ data }: { data: any[] }) {
+type VerticalProps = {
+  data: any[];
+  scale?: number;
+};
+
+export default function Vertical({ data, scale = 1 }: VerticalProps) {
+  const coverWidth = 176 * scale; // w-44
+  const coverHeight = coverWidth * 1.5;
+  const cardWidth = 384 * scale; // w-96
+  const cardHeight = 160 * scale; // h-40
+
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -9,11 +19,17 @@ export default function Vertical({ data }: { data: any[] }) {
         paddingVertical: 8,
       }}>
       {data.map((item) => (
-        <View key={item.id} className="ml-10 mb-8 w-48">
+        <View key={item.id} className="mb-8 w-48">
           <View className="mr-4 w-48 flex-row items-center gap-3">
             <View className="mb-6 items-center">
-                            
-              <View className="z-10 w-44 overflow-hidden border border-gray-500">
+              <View
+                style={{
+                  width: coverWidth,
+                  overflow: 'hidden',
+                  borderWidth: 1,
+                  borderColor: '#6b7280',
+                  zIndex: 10,
+                }}>
                 <Image
                   source={{ uri: item.cover }}
                   resizeMode="cover"
@@ -21,13 +37,45 @@ export default function Vertical({ data }: { data: any[] }) {
                 />
               </View>
 
-              <View className="absolute justify-content items-start -left-6 bottom-10 w-96 h-40 bg-yellow-300/30 p-3">
-                <Text numberOfLines={2} className="left-52 w-36 text-xl font-bold text-neutral-700">{item.title}</Text>
-                <Text className="left-52 mt-2 text-sm text-neutral-500">{item.author}</Text>
-                <Text className="left-52 text-sm text-neutral-500">{item.genre}</Text>
-                <Text className="left-52 text-sm text-neutral-500">stars</Text>
+              <View
+                style={{
+                  position: 'absolute',
+                  left: -24 * scale,
+                  bottom: 40 * scale,
+                  width: cardWidth,
+                  height: cardHeight,
+                  padding: 12 * scale,
+                  backgroundColor: 'rgba(253,224,71,0.3)',
+                }}>
+                <Text
+                  numberOfLines={2}
+                  style={{
+                    left: 208 * scale,
+                    width: 144 * scale,
+                    fontSize: 20 * scale,
+                    fontWeight: '700',
+                  }}>
+                  {item.title}
+                </Text>
+                <Text
+                  style={{
+                    left: 208 * scale,
+                    width: 144 * scale,
+                    fontSize: 13 * scale,
+                    color: '#6b7280',
+                  }}>
+                  {item.author}
+                </Text>
+                <Text
+                  style={{
+                    left: 208 * scale,
+                    width: 144 * scale,
+                    fontSize: 13 * scale,
+                    color: '#6b7280',
+                  }}>
+                  {item.genre}
+                </Text>
               </View>
-
             </View>
           </View>
         </View>

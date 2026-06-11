@@ -9,6 +9,7 @@ import Footer from 'components/Footer';
 import Title from 'components/Title';
 import Horizontal from 'components/Horizontal';
 import Vertical from 'components/Vertical';
+import books from '../../data.json';
 
 export default function index() {
   const logout = useAuthStore((state) => state.logout);
@@ -28,79 +29,6 @@ export default function index() {
     }
   }, [loggedIn]);
 
-const books = [
-  {
-    id: 1,
-    title: 'Atomic Habits',
-    author: 'James Clear',
-    genre: 'Self Help',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg',
-  },
-  {
-    id: 2,
-    title: 'The Alchemist',
-    author: 'Paulo Coelho',
-    genre: 'Fiction',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780061122415-L.jpg',
-  },
-  {
-    id: 3,
-    title: 'The Silent Patient',
-    author: 'Alex Michaelides',
-    genre: 'Thriller',
-    cover: 'https://covers.openlibrary.org/b/isbn/9781250301697-L.jpg',
-  },
-  {
-    id: 4,
-    title: 'Dune',
-    author: 'Frank Herbert',
-    genre: 'Sci-Fi',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780441172719-L.jpg',
-  },
-  {
-    id: 5,
-    title: 'Sapiens',
-    author: 'Yuval Noah Harari',
-    genre: 'History',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg',
-  },
-  {
-    id: 6,
-    title: 'Rich Dad Poor Dad',
-    author: 'Robert T. Kiyosaki',
-    genre: 'Finance',
-    cover: 'https://covers.openlibrary.org/b/isbn/9781612680194-L.jpg',
-  },
-  {
-    id: 7,
-    title: 'The Psychology of Money',
-    author: 'Morgan Housel',
-    genre: 'Finance',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780857197689-L.jpg',
-  },
-  {
-    id: 8,
-    title: '1984',
-    author: 'George Orwell',
-    genre: 'Dystopian',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg',
-  },
-  {
-    id: 9,
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    genre: 'Classic',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg',
-  },
-  {
-    id: 10,
-    title: 'Harry Potter and the Sorcerer\'s Stone',
-    author: 'J.K. Rowling',
-    genre: 'Fantasy',
-    cover: 'https://covers.openlibrary.org/b/isbn/9780590353427-L.jpg',
-  },
-];
-
   return (
     <SafeAreaView className="h-full w-full flex-1 bg-background">
       <ScrollView className="flex-1">
@@ -110,10 +38,12 @@ const books = [
           <Title title="Recents" readmore={true} />
           <Horizontal data={books} />
           <Title title="Continue Reading" readmore={false} />
-          <Vertical data={books} />
+          <View className="ml-10">
+            <Vertical data={books} scale={0.9} />
+          </View>
         </View>
       </ScrollView>
       <Footer highlight="home" />
     </SafeAreaView>
   );
-};
+}

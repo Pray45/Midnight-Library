@@ -13,7 +13,8 @@ export default function RootLayout() {
   const loggedIn = useAuthStore((state) => state.loggedIn);
 
   useEffect(() => {
-    NavigationBar.setButtonStyleAsync('dark');
+    NavigationBar.setBackgroundColorAsync('#1E1E1E');
+    NavigationBar.setButtonStyleAsync('light');
   }, []);
 
   useEffect(() => {
