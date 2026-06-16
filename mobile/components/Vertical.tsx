@@ -1,4 +1,5 @@
-import { View, Image, ScrollView, Text } from 'react-native';
+import { View, Image, ScrollView, Text, Pressable } from 'react-native';
+import { router } from 'expo-router/build/exports';
 
 type VerticalProps = {
   data: any[];
@@ -22,7 +23,8 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
         <View key={item.id} className="mb-8 w-48">
           <View className="mr-4 w-48 flex-row items-center gap-3">
             <View className="mb-6 items-center">
-              <View
+              <Pressable
+                onPress={() => router.push({ pathname: `/screens/listen/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
                 style={{
                   width: coverWidth,
                   overflow: 'hidden',
@@ -35,9 +37,10 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
                   resizeMode="cover"
                   className="aspect-[2/3] w-full"
                 />
-              </View>
+              </Pressable>
 
-              <View
+              <Pressable
+                onPress={() => router.push({ pathname: `/screens/listen/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
                 style={{
                   position: 'absolute',
                   left: -24 * scale,
@@ -75,7 +78,7 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
                   }}>
                   {item.genre}
                 </Text>
-              </View>
+              </Pressable>
             </View>
           </View>
         </View>
