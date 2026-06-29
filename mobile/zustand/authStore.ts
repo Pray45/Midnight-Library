@@ -39,7 +39,7 @@ const STORAGE_KEYS = {
   userData: 'auth.userData',
 } as const;
 
-const API_BASE_URL = 'http://10.85.210.138:5000';
+const API_BASE_URL = 'https://moonlit-xo1i.onrender.com';
 
 const storage = {
   async getItem(key: string) {

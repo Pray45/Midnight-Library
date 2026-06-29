@@ -30,10 +30,12 @@ const bookSchema = new mongoose.Schema({
 
     description: String,
 
-    genres: [String],
+    all_genres: [String],
+
+    genre: string,
 
     publishYear: Number,
-
+    
     languages: [String],
 
     pageCount: Number,

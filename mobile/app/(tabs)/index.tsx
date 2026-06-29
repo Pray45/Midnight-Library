@@ -13,7 +13,7 @@ export default function index() {
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView edges={['top']} className="flex-1">
-        <Header heading="MoonLit" imgShown={true} />
+        <Header heading="Midnight Library" />
         <ScrollView className="flex">
           <View className="mt-5">
             {coffee && <BuyMeCoffee />}

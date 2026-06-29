@@ -1,12 +1,9 @@
 {
   "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "Midnight-Library",
+    "slug": "midnight-library",
     "version": "1.0.0",
     "scheme": "mobile",
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "experiments": {
       "tsconfigPaths": true
     },
@@ -19,7 +16,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#050816"
+      "backgroundColor": "#FFEFD7"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -29,12 +26,19 @@
       "bundleIdentifier": "com.anonymous.myexpoapp"
     },
     "android": {
+      "edgeToEdgeEnabled": false,
       "adaptiveIcon": {
-        "edgeToEdgeEnabled": false,
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#050816"
+        "backgroundColor": "#FFEFD7"
       },
       "package": "com.anonymous.myexpoapp"
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "6d9e6729-b6ea-4f50-85c4-e32a60e085d3"
+      }
+    },
+    "owner": "praypatel"
   }
 }

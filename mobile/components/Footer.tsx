@@ -16,7 +16,7 @@ const tabs: {
   route: string;
 }[] = [
     { name: 'category', icon: 'book-outline', route: '/(tabs)/Category' },
-    { name: 'bookmark', icon: 'bookmark-outline', route: '/(tabs)/bookmark' },
+    { name: 'bookmark', icon: 'bookmark-outline', route: '/(tabs)/Saved' },
     { name: 'home', icon: 'home-outline', route: '/(tabs)' },
     { name: 'search', icon: 'search-outline', route: '/(tabs)/Search' },
     { name: 'event', icon: 'sparkles-outline', route: '/(tabs)/event' },

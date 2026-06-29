@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function BuyMeCoffee() {
     return (
-        <View className="flex w-full items-center justify-center"
+        <View className="flex w-full items-center justify-center border-2"
             style={{ backgroundColor: 'rgb(255, 190, 0)', height: 200 }}
         >
             <Text className= "text-4xl font-bold">Read Anytime. Anywhere.</Text>

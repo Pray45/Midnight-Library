@@ -99,7 +99,7 @@ function SecondPage({ onNext, onBack }: PageProps) {
 function ThirdPage({ onNext, onBack }: PageProps) {
   return (
     <View className="h-full w-full justify-end bg-bgst">
-      <Pressable onPress={onBack} className="absolute left-6 top-16 z-10">
+      <Pressable onPress={onBack} className="absolute left-6 top-16 z-10 pb-4">
         <Ionicons name="arrow-back" size={28} color="black" />
       </Pressable>
 

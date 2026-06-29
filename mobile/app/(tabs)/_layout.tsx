@@ -1,12 +1,16 @@
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
-export default function AuthLayout() {
+export default function TabsLayout() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: '#fef7ec' },
-      }}
-    />
+    <>
+      <StatusBar style="light" backgroundColor="#000000" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: '#fef7ec' },
+        }}
+      />
+    </>
   );
 }

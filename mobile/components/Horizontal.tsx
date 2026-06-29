@@ -1,5 +1,6 @@
 import { View, Text, Image, ScrollView, Pressable } from 'react-native';
 import React from 'react';
+import { router } from 'expo-router/build/exports';
 
 export default function Horizontal({ data }: { data: any }) {
   return (
@@ -10,9 +11,11 @@ export default function Horizontal({ data }: { data: any }) {
         paddingHorizontal: 16,
         paddingVertical: 8,
       }}>
-      {data.map((item:any) => (
-        <Pressable key={item.id} className="mr-4 w-44" android_ripple={{ color: '#ddd' }}>
-          <View className="overflow-hidden bg-white/50 ">
+      {data.map((item: any) => (
+        <Pressable key={item.id}
+          onPress={() => router.push({ pathname: `/screens/book/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
+          className="mr-4 w-44" android_ripple={{ color: '#ddd' }}>
+          <View className="overflow-hidden border-amber-500/50 border rounded-lg bg-amber-200/10 ">
             <Image
               source={{ uri: item.cover }}
               resizeMode="cover"
