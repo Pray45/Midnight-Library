@@ -8,17 +8,28 @@ const client = axios.create({
 });
 
 export async function searchBooks(query, startIndex = 0, maxResults = 40) {
-    const { data } = await client.get("/volumes", {
-        params: {
-            q: query,
-            startIndex,
-            maxResults,
-            printType: "books",
-            key: process.env.GOOGLE_BOOKS_API_KEY,
-        },
-    });
 
-    return data;
+    try {
+
+        const { data } = await client.get("/volumes", {
+            params: {
+                q: query,
+                startIndex,
+                maxResults,
+                printType: "books",
+                key: process.env.GOOGLE_BOOKS_API_KEY,
+            },
+        });
+
+        return data;
+
+    } catch (err) {
+
+        console.error("Search Failed:", err.message);
+        await sleep(5000);
+        
+    }
+
 }
 
 export async function getBook(volumeId) {

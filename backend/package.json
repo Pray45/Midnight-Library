@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon server.js",
-    "db": "drizzle-kit generate && npx drizzle-kit push"
+    "db": "drizzle-kit generate && npx drizzle-kit push",
+    "import": "node ./robust_importer/scripts/importer.js"
   },
   "dependencies": {
     "@totallynotdavid/books": "^0.0.2",
