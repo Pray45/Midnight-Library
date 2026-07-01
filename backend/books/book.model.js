@@ -1,58 +1,64 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const bookSchema = new mongoose.Schema({
+const bookSchema = new mongoose.Schema(
+    {
+        source: {
+            type: String,
+            default: "google-books",
+        },
 
-    openLibraryId: {
-        type: String,
-        required: true,
-        unique: true,
-        index: true,
+        sourceId: {
+            type: String,
+            required: true,
+            index: true,
+        },
+
+        title: {
+            type: String,
+            required: true,
+        },
+
+        subtitle: String,
+
+        authorIds: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Author",
+            },
+        ],
+
+        cover: String,
+
+        smallCover: String,
+
+        description: String,
+
+        genre: {
+            type: String,
+            default: "",
+        },
+
+        all_genres: {
+            type: [String],
+            default: [],
+        },
+
+        publishYear: Number,
+
+        languages: {
+            type: [String],
+            default: [],
+        },
+
+        pageCount: Number,
+
+        series: String,
+
+        seriesPosition: Number,
     },
-
-    title: {
-        type: String,
-        required: true,
-    },
-
-    subtitle: String,
-
-    authors: {
-        type: [String],
-        default: [],
-    },
-
-    authorIds: {
-        type: [String],
-        default: [],
-    },  
-
-    cover: String,
-
-    description: String,
-
-    all_genres: [String],
-
-    genre: String,
-
-    publishYear: Number,
-    
-    languages: [String],
-
-    pageCount: Number,
-
-    isbn10: [String],
-
-    isbn13: [String],
-
-    series: String,
-
-    seriesPosition: Number,
-},
     {
         timestamps: true,
     }
-)
+);
 
-const Book = mongoose.model("Book", bookSchema);
-
-export default Book;
+export default mongoose.model("Book", bookSchema);
