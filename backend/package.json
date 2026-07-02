@@ -9,11 +9,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon server.js",
-    "db": "drizzle-kit generate && npx drizzle-kit push"
+    "db": "drizzle-kit generate && npx drizzle-kit push",
+    "import": "node ./robust_importer/scripts/importer.js"
   },
   "dependencies": {
     "@totallynotdavid/books": "^0.0.2",
-    "axios": "^1.18.0",
+    "axios": "^1.18.1",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
