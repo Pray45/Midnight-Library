@@ -12,17 +12,24 @@ export default function Horizontal({ data }: { data: any }) {
         paddingVertical: 8,
       }}>
       {data.map((item: any) => (
-        <Pressable key={item.id}
-          onPress={() => router.push({ pathname: `/screens/book/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
-          className="mr-4 w-44" android_ripple={{ color: '#ddd' }}>
-          <View className="overflow-hidden border-amber-500/50 border rounded-lg bg-amber-200/10 ">
+        <Pressable
+          key={item.id}
+          onPress={() =>
+            router.push({
+              pathname: `/screens/book/${item.id}`,
+              params: { book: JSON.stringify(item) },
+            })
+          }
+          className="mr-4 w-44"
+          android_ripple={{ color: '#ddd' }}>
+          <View className="overflow-hidden rounded-lg border border-amber-500/50 bg-amber-200/10 ">
             <Image
               source={{ uri: item.cover }}
               resizeMode="cover"
               className="aspect-[2/3] w-full border-2"
             />
 
-            <View className="py-3 px-1">
+            <View className="px-1 py-3">
               <View className="mb-0.5 self-start rounded-lg bg-amber-100 px-2 py-1">
                 <Text numberOfLines={1} className="text-xs font-medium text-amber-700">
                   {item.genre}

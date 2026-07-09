@@ -13,7 +13,7 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
 
   return (
     <ScrollView
-    className="mb-20"
+      className="mb-20"
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{
         paddingHorizontal: 16,
@@ -24,7 +24,12 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
           <View className="mr-4 w-48 flex-row items-center gap-3">
             <View className="mb-6 items-center">
               <Pressable
-                onPress={() => router.push({ pathname: `/screens/book/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
+                onPress={() =>
+                  router.push({
+                    pathname: `/screens/book/${item.id}`,
+                    params: { book: JSON.stringify(item) },
+                  })
+                }
                 style={{
                   width: coverWidth,
                   overflow: 'hidden',
@@ -40,7 +45,12 @@ export default function Vertical({ data, scale = 1 }: VerticalProps) {
               </Pressable>
 
               <Pressable
-                onPress={() => router.push({ pathname: `/screens/book/${item.id}`, params: { cover: item.cover, title: item.title, author: item.author } })}
+                onPress={() =>
+                  router.push({
+                    pathname: `/screens/book/${item.id}`,
+                    params: { book: JSON.stringify(item) },
+                  })
+                }
                 className="absolute rounded-lg border border-amber-500/50 bg-amber-200/10"
                 style={{
                   left: -24 * scale,

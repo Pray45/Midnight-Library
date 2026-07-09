@@ -1,39 +1,59 @@
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 const client = axios.create({
     baseURL: "https://www.googleapis.com/books/v1",
     timeout: 30000,
 });
 
-export async function searchBooks(query, startIndex = 0, maxResults = 40) {
+const sleep = (ms) =>
+    new Promise(resolve => setTimeout(resolve, ms));
 
-    try {
+export async function searchBooks(
+    query,
+    startIndex = 0,
+    maxResults = 40
+) {
 
-        const { data } = await client.get("/volumes", {
-            params: {
-                q: query,
-                startIndex,
-                maxResults,
-                printType: "books",
-                key: process.env.GOOGLE_BOOKS_API_KEY,
-            },
-        });
+    let retries = 5;
 
-        return data;
+    while (retries--) {
 
-    } catch (err) {
+        try {
 
-        console.error("Search Failed:", err.message);
-        await sleep(5000);
-        
+            const { data } = await client.get("/volumes", {
+                params: {
+                    q: `inpublisher:${query}`,
+                    startIndex,
+                    maxResults,
+                    printType: "books",
+                    key: process.env.GOOGLE_BOOKS_API_KEY,
+                },
+            });
+
+            return data;
+
+        } catch (err) {
+
+            if (err.response?.status === 429) {
+
+                console.log("Rate limited. Waiting 10 seconds...");
+
+                await sleep(10000);
+
+                continue;
+            }
+
+            console.error(err.message);
+
+            return {
+                totalItems: 0,
+                items: [],
+            };
+        }
     }
 
-}
-
-export async function getBook(volumeId) {
-    const { data } = await client.get(`/volumes/${volumeId}`);
-
-    return data;
+    return {
+        totalItems: 0,
+        items: [],
+    };
 }

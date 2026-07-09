@@ -4,8 +4,7 @@ import dotenv from "dotenv";
 import AuthRouter from "./user/user.routes.js";
 import Bookrouter from "./books/books.routes.js";
 import connectDB from "./db.js";
-import test from "./robust_importer/test.js"
-import runImporter from "./robust_importer/scripts/importer.js";
+// import runImporter from "./robust_importer/scripts/importer.js";
 
 dotenv.config();
 const app = express();
@@ -25,6 +24,7 @@ connectDB();
 
 //-----------------------------> Routes
 
+app.use("/health", (req, res) => { res.json({ message: "OK" }) }); // test route
 app.use("/user", AuthRouter); // login, register, get, update, delete
 app.use("/books", Bookrouter); // search, get, update, delete
 
