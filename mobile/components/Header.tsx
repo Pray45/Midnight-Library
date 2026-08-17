@@ -1,7 +1,7 @@
 import { View, Image, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { router } from 'expo-router/build/exports';
+import { router } from 'expo-router';
 import { useAuthStore } from 'zustand/authStore';
 
 function Header({ heading }: { heading: string }) {

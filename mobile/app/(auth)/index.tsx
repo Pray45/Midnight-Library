@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { useAuthStore } from '../../zustand/authStore';
+import PageTransition from 'components/PageTransition';
 
 function Field({
   label,
@@ -87,37 +88,39 @@ export default function AuthRoute() {
   };
 
   return (
-    <KeyboardAvoidingView
-      className="flex-1 bg-background"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
-        <Image className="h-3/5 w-full" source={require('../../assets/login.png')} />
+    <PageTransition className="flex-1 bg-background">
+      <KeyboardAvoidingView
+        className="flex-1 bg-background"
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+          <Image className="h-3/5 w-full" source={require('../../assets/login.png')} />
 
-        <View className={`flex-1 justify-center px-6 ${keyboardOpen ? 'mt-20' : ''}`}>
-          <Field label="Email" val={email} onChangeText={setEmail} placeholder="you@example.com" />
+          <View className={`flex-1 justify-center px-6 ${keyboardOpen ? 'mt-20' : ''}`}>
+            <Field label="Email" val={email} onChangeText={setEmail} placeholder="you@example.com" />
 
-          <Field
-            label="Password"
-            val={password}
-            onChangeText={setPassword}
-            placeholder="Your password"
-            secureTextEntry
-          />
+            <Field
+              label="Password"
+              val={password}
+              onChangeText={setPassword}
+              placeholder="Your password"
+              secureTextEntry
+            />
 
-          <Pressable onPress={onSubmit} className="mt-5 rounded-2xl bg-black px-4 py-4">
-            <Text className="text-center text-xl font-bold text-white">
-              {loading ? 'Signing in...' : 'Sign in'}
-            </Text>
-          </Pressable>
-          {error ? <Text className="mt-4 text-center text-base text-red-600">{error}</Text> : null}
-          <View className="mt-6 flex-row justify-center">
-            <Text className="text-base text-black/70">Dont have an account? </Text>
-            <Pressable onPress={() => router.replace('/(auth)/register')}>
-              <Text className="text-base font-bold text-orange-600">Register</Text>
+            <Pressable onPress={onSubmit} className="mt-5 rounded-2xl bg-black px-4 py-4">
+              <Text className="text-center text-xl font-bold text-white">
+                {loading ? 'Signing in...' : 'Sign in'}
+              </Text>
             </Pressable>
+            {error ? <Text className="mt-4 text-center text-base text-red-600">{error}</Text> : null}
+            <View className="mt-6 flex-row justify-center">
+              <Text className="text-base text-black/70">Dont have an account? </Text>
+              <Pressable onPress={() => router.replace('/(auth)/register')}>
+                <Text className="text-base font-bold text-orange-600">Register</Text>
+              </Pressable>
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </PageTransition>
   );
 }

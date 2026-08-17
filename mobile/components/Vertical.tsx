@@ -1,5 +1,5 @@
 import { View, Image, ScrollView, Text, Pressable } from 'react-native';
-import { router } from 'expo-router/build/exports';
+import { router } from 'expo-router';
 
 type VerticalProps = {
   data: any[];

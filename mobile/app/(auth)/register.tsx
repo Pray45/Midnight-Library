@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { useAuthStore } from '../../zustand/authStore';
+import PageTransition from 'components/PageTransition';
 
 function Field({
   label,
@@ -87,58 +88,60 @@ export default function RegisterRoute() {
     }
   };
   return (
-    <KeyboardAvoidingView
-      className="flex-1 bg-background"
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
-        <Image
-          className="h-[42%] w-full"
-          source={require('../../assets/login.png')}
-          resizeMode="cover"
-        />
+    <PageTransition className="flex-1 bg-background">
+      <KeyboardAvoidingView
+        className="flex-1 bg-background"
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+          <Image
+            className="h-[42%] w-full"
+            source={require('../../assets/login.png')}
+            resizeMode="cover"
+          />
 
-        <View className={`flex-1 px-6 ${keyboardOpen ? 'mt-10' : 'mt-2'}`}>
-          <Text className="text-4xl font-bold text-black">Create New Account</Text>
+          <View className={`flex-1 px-6 ${keyboardOpen ? 'mt-10' : 'mt-2'}`}>
+            <Text className="text-4xl font-bold text-black">Create New Account</Text>
 
-          <View className="mt-8">
-            <Field
-              val={name}
-              onChangeText={setName}
-              label="First Name"
-              placeholder="Enter your name"
-            />
-            <Field
-              val={email}
-              onChangeText={setEmail}
-              label="Email Address"
-              placeholder="Enter your email"
-            />
-            <Field
-              val={password}
-              onChangeText={setPassword}
-              label="Password"
-              placeholder="Enter your password"
-              secureTextEntry
-            />
+            <View className="mt-8">
+              <Field
+                val={name}
+                onChangeText={setName}
+                label="First Name"
+                placeholder="Enter your name"
+              />
+              <Field
+                val={email}
+                onChangeText={setEmail}
+                label="Email Address"
+                placeholder="Enter your email"
+              />
+              <Field
+                val={password}
+                onChangeText={setPassword}
+                label="Password"
+                placeholder="Enter your password"
+                secureTextEntry
+              />
 
-            <Pressable onPress={onSubmit} className="mt-6 rounded-2xl bg-black px-4 py-4">
-              <Text className="text-center text-xl font-bold text-white">
-                {loading ? 'Registering...' : 'Register'}
-              </Text>
-            </Pressable>
-            {error ? (
-              <Text className="mt-4 text-center text-base text-red-600">{error}</Text>
-            ) : null}
-
-            <View className="mt-6 flex-row justify-center">
-              <Text className="text-base text-black/70">Already have an account? </Text>
-              <Pressable onPress={() => router.replace('/(auth)')}>
-                <Text className="text-base font-bold text-orange-600">Login</Text>
+              <Pressable onPress={onSubmit} className="mt-6 rounded-2xl bg-black px-4 py-4">
+                <Text className="text-center text-xl font-bold text-white">
+                  {loading ? 'Registering...' : 'Register'}
+                </Text>
               </Pressable>
+              {error ? (
+                <Text className="mt-4 text-center text-base text-red-600">{error}</Text>
+              ) : null}
+
+              <View className="mt-6 flex-row justify-center">
+                <Text className="text-base text-black/70">Already have an account? </Text>
+                <Pressable onPress={() => router.replace('/(auth)')}>
+                  <Text className="text-base font-bold text-orange-600">Login</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </PageTransition>
   );
 }

@@ -1,6 +1,6 @@
 import { View, Text, Image, ScrollView, Pressable } from 'react-native';
 import React from 'react';
-import { router } from 'expo-router/build/exports';
+import { router } from 'expo-router';
 
 export default function Horizontal({ data }: { data: any }) {
   return (

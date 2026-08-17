@@ -9,6 +9,8 @@ export default function TabsLayout() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: '#fef7ec' },
+          animation: 'fade',
+          animationDuration: 200,
         }}
       />
     </>

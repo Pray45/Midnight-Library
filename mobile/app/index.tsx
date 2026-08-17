@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAuthStore } from '../zustand/authStore';
+import Animated, { FadeInRight, FadeOutLeft } from 'react-native-reanimated';
 
 export default function NewUser() {
   const [page, setPage] = useState(0);
@@ -29,7 +30,16 @@ export default function NewUser() {
     <FourthPage key={3} onBack={prevPage} />,
   ];
 
-  return pages[page] || pages[0];
+  return (
+    <Animated.View
+      key={page}
+      entering={FadeInRight.duration(250)}
+      exiting={FadeOutLeft.duration(200)}
+      className="flex-1 bg-bgst"
+    >
+      {pages[page] || pages[0]}
+    </Animated.View>
+  );
 }
 
 type PageProps = {

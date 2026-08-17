@@ -31,7 +31,7 @@ export const useBookStore = create<bookState>((set, get) => ({
         try {
             set({ loading: true, error: null });
 
-            const response = await axios.get('http://10.85.210.138:3000/books/random');
+            const response = await axios.get('https://moonlit-xo1i.onrender.com/books/random');
 
             const data = response.data.data;
             set({ randomBooks: data });

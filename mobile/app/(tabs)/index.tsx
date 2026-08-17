@@ -8,6 +8,7 @@ import Horizontal from 'components/Horizontal';
 import Vertical from 'components/Vertical';
 import { useBookStore } from 'zustand/bookStore';
 import BuyMeCoffee from 'components/Ui/BuyMeCoffee';
+import PageTransition from 'components/PageTransition';
 
 export default function Index() {
 
@@ -21,20 +22,22 @@ export default function Index() {
 
   return (
     <View className="flex-1 bg-background">
-      <SafeAreaView edges={['top']} className="flex-1">
-        <Header heading="Midnight Library" />
-        <ScrollView className="flex">
-          <View className="mt-5">
-            {coffee && <BuyMeCoffee />}
-            <Title title="Recents" readmore />
-            <Horizontal data={randomBooks} />
-            <Title title="Featured Books" readmore={false} />
-            <View className="ml-10 w-full">
-              <Vertical data={randomBooks} scale={0.9} />
+      <PageTransition>
+        <SafeAreaView edges={['top']} className="flex-1">
+          <Header heading="Midnight Library" />
+          <ScrollView className="flex">
+            <View className="mt-5">
+              {coffee && <BuyMeCoffee />}
+              <Title title="Recents" readmore />
+              <Horizontal data={randomBooks} />
+              <Title title="Featured Books" readmore={false} />
+              <View className="ml-10 w-full">
+                <Vertical data={randomBooks} scale={0.9} />
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+          </ScrollView>
+        </SafeAreaView>
+      </PageTransition>
       <Footer highlight="home" />
     </View>
   );

@@ -37,6 +37,9 @@ export default function RootLayout() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: '#fef7ec' },
+          animation: 'slide_from_right',
+          animationDuration: 250,
+          gestureEnabled: true,
         }}
       >
         {loggedIn ? (
